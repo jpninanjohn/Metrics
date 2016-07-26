@@ -31,11 +31,6 @@ public class Weight extends Measurement{
         return super.subtractMeasurement(otherWeight);
     }
 
-    public Unit getBaseUnit(){
-        return Unit.G;
-    }
-
-
     @Override
     public String toString() {
         return "Weight{" +
@@ -44,32 +39,6 @@ public class Weight extends Measurement{
                 '}';
     }
 
-    @Override
-    public boolean equals(Object other) {
-        if (other == null) {
-            return false;
-        }
-        if (!(other instanceof Measurement)) {
-            return false;
-        }
-        /*if(this.getClass()!=other.getClass()){
-            return false;
-        }*/
-
-        return toBaseUnit() == ((Measurement) other).toBaseUnit();
-    }
-
-
-
-    @Override
-    public int hashCode() {
-        int result;
-        long temp;
-        temp = Double.doubleToLongBits(value);
-        result = (int) (temp ^ (temp >>> 32));
-        result = 31 * result + (unit != null ? unit.hashCode() : 0);
-        return result;
-    }
 
 
 }

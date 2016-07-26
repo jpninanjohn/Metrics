@@ -24,9 +24,10 @@ public class DistanceTest {
     }
 
     @Test
-    public void oneFootShouldBeEqualToOneFoot(){
-        assertEquals(Distance.createFeet(1),Distance.createFeet(1));
+    public void oneFootShouldBeEqualToOneFoot() {
+        assertEquals(Distance.createFeet(1), Distance.createFeet(1));
     }
+
     @Test
     public void oneKilometerShouldBeEqualToThousandMeters() {
         assertEquals(Distance.createKilometers(1), Distance.createMeters(1000));
@@ -41,36 +42,39 @@ public class DistanceTest {
     public void twelveInchesShouldBeEqualToOneFeet() {
         assertEquals(Distance.createInches(12), Distance.createFeet(1));
     }
+
     @Test
     public void oneKmPlusOneKmIsTwoKm() {
-        Distance distance1=Distance.createKilometers(1.0);
-        Distance distance2=Distance.createKilometers(1.0);
-        Distance expected=Distance.createKilometers(2.0);
-        assertEquals(expected,distance1.addDistance(distance2));
+        Distance distance1 = Distance.createKilometers(1.0);
+        Distance distance2 = Distance.createKilometers(1.0);
+        Distance expected = Distance.createKilometers(2.0);
+        assertEquals(expected, distance1.addDistance(distance2));
     }
 
     @Test
     public void oneKmPlusThousandMeterIsTwoKm() {
-        Distance distance1=Distance.createKilometers(1.0);
-        Distance distance2=Distance.createMeters(1000.0);
-        Distance expected=Distance.createKilometers(2.0);
-        assertEquals(expected,distance1.addDistance(distance2));
+        Distance distance1 = Distance.createKilometers(1.0);
+        Distance distance2 = Distance.createMeters(1000.0);
+        Distance expected = Distance.createKilometers(2.0);
+        assertEquals(expected, distance1.addDistance(distance2));
     }
+
     @Test
     public void oneThousandMeterPlusOneKmIsTwoThousandMeter() {
-        Distance distance1=Distance.createMeters(1000.0);
-        Distance distance2=Distance.createKilometers(1.0);
-        Distance expected=Distance.createMeters(2000.0);
-        assertEquals(expected,distance1.addDistance(distance2));
+        Distance distance1 = Distance.createMeters(1000.0);
+        Distance distance2 = Distance.createKilometers(1.0);
+        Distance expected = Distance.createMeters(2000.0);
+        assertEquals(expected, distance1.addDistance(distance2));
     }
 
     @Test
     public void oneKmSubtractedWithThousandMeterIsZeroKm() {
-        Distance distance1=Distance.createKilometers(1.0);
-        Distance distance2=Distance.createMeters(1000.0);
-        Distance expected=Distance.createKilometers(0.0);
-        assertEquals(expected,distance1.subtractDistance(distance2));
+        Distance distance1 = Distance.createKilometers(1.0);
+        Distance distance2 = Distance.createMeters(1000.0);
+        Distance expected = Distance.createKilometers(0.0);
+        assertEquals(expected, distance1.subtractDistance(distance2));
     }
+
     @Test
     public void oneFootShouldEqualToTwelveInches() {
         assertEquals(Distance.createFeet(1), Distance.createInches(12));

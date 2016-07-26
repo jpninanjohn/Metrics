@@ -36,9 +36,6 @@ public class Distance extends Measurement {
         return super.subtractMeasurement(otherWeight);
     }
 
-    public Unit getBaseUnit(){
-        return Unit.CM;
-    }
 
 
     @Override
@@ -48,34 +45,6 @@ public class Distance extends Measurement {
                 ", unit=" + unit +
                 '}';
     }
-
-    @Override
-    public boolean equals(Object other) {
-        if (other == null) {
-            return false;
-        }
-        if (!(other instanceof Measurement)) {
-            return false;
-        }
-        if (this.getBaseUnit()!= ((Measurement)(other)).getBaseUnit()) {
-            return false;
-        }
-
-        return toBaseUnit() == ((Measurement) other).toBaseUnit();
-    }
-
-
-
-    @Override
-    public int hashCode() {
-        int result;
-        long temp;
-        temp = Double.doubleToLongBits(value);
-        result = (int) (temp ^ (temp >>> 32));
-        result = 31 * result + (unit != null ? unit.hashCode() : 0);
-        return result;
-    }
-
 
 
 }

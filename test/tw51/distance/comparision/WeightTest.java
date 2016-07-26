@@ -15,7 +15,7 @@ public class WeightTest {
         assertEquals(Weight.createGram(1000),Weight.createKilogram(1));
     }
 
-    @Test
+    @Test(expected=IllegalArgumentException.class)
     public void oneKilogramShouldBeEqualToTenMeters() {
         assertEquals(Weight.createKilogram(1),Distance.createMeters(10));
     }
@@ -29,11 +29,11 @@ public class WeightTest {
     }
 
     @Test
-    public void oneKilogramPlusThousandGramsIsTwoKilogram(){
+    public void oneKilogramMinusThousandGramsIsZeroKilograms(){
         Weight weight1=Weight.createKilogram(1);
         Weight weight2=Weight.createGram(1000);
-        Weight expected=Weight.createGram(2000);
-        assertEquals(expected,weight2.addWeight(weight1));
+        Weight expected=Weight.createKilogram(0);
+        assertEquals(expected,weight1.subtractWeight(weight2));
     }
 
 }

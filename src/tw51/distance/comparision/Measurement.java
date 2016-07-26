@@ -41,5 +41,32 @@ public class Measurement {
         double addedMeasurement = this.value - otherMeasurement.value;
         return new Measurement(addedMeasurement / this.unit.getConversionFactor(), this.unit);
     }
+    @Override
+    public boolean equals(Object other) {
+        if (other == null) {
+            return false;
+        }
+        if (!(other instanceof Measurement)) {
+            return false;
+        }
+
+        if(this.unit.getTypeOfUnit()!=((Measurement) other).unit.getTypeOfUnit()){
+            throw new IllegalArgumentException();
+        }
+
+        return toBaseUnit() == ((Measurement) other).toBaseUnit();
+    }
+
+    @Override
+    public int hashCode() {
+        int result;
+        long temp;
+        temp = Double.doubleToLongBits(value);
+        result = (int) (temp ^ (temp >>> 32));
+        result = 31 * result + (unit != null ? unit.hashCode() : 0);
+        return result;
+    }
+
+
 
 }
